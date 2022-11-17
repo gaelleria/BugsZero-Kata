@@ -70,7 +70,7 @@ au lieu des tableaux comme type pour les 3 attributs places, purses and inPenalt
 
 Si un joueur rate une question, il va en prison en positionnant son top inPenaltyBox à true. 
 A aucun endroit dans le code il n'est evoqué la remise à false de ce top. Donc il faut implémenter le faire idéalement 
-juste après la ligne 117 de la classe Game avant d'incrémenter currentPlayer.
+juste après la ligne 114 de la classe Game avant d'incrémenter currentPlayer.
 
 ``inPenaltyBox[currentPlayer] = true;``
 
@@ -88,8 +88,18 @@ Cette classe fournirait des methodes utiles pour le faire avancer et alimenter s
 
 ### la classe Game et GameRunner
 
-Si l'idée est de toujours passer par leº GameRunner pour lancer le jeu, alors il faudrait pouvoir recuperer le nom des 
+Si l'idée est de toujours passer par le GameRunner pour lancer le jeu, alors il faudrait pouvoir recuperer le nom des 
 jours de manière dynamique et faire des précontrôles nécessaires avant de lancer le jeu.  
 
 Sinon l'ideale serait de déplacer la méthode ``playGame()`` de la classe GameRunner dans la classe Game car elle contient
 une partie de la logique du jeu.
+
+
+## 5 - Ajout des coins au mauvais joueur
+
+> coins are added to the wrong player. Try to understand what made this bug likely and fix the design so that it becomes very unlikely.
+ 
+Solution 1: Ce bug pourrait être évité facilement en mettant en place la solution mentionnée plus haut, point 4
+
+Solution 2: incrementer la bourse ``purses[currentPlayer]++; (ligne 118)`` avant d'incrémenter le currentPlayer 
+``currentPlayer++; (ligne 116)``
